@@ -41,8 +41,8 @@ def find_relevant_clauses(pdf_text, problems):
                     {"role": "system", "content": "You are an intelligent legal assistant designed to extract clauses relevant to rental problems."},
                     {"role": "user", "content": f"Identify and extract any clauses from the following rental contract section that directly address or are relevant to the following issues: {problems}. If no relevant clause is found for a specific issue, return 'NULL' for that issue. Focus on clauses that contain specific terms, conditions, or obligations related to each issue listed. Only provide the exact clause(s) that pertain to the issues without additional commentary. Contract Section: {chunk}"}
                 ],
-                max_tokens=300,
-                temperature=0.3
+                max_tokens=300, # relatively low tokens
+                temperature=0.3 # keep temperature low, we want exact quotes.
             )
             clause_text = completion.choices[0].message.content.strip()
             logging.debug(f"OpenAI API response for clauses: {clause_text}")
@@ -71,17 +71,34 @@ def generate_letter(name, landlord_name, landlord_address, problems, communicati
     date = html.escape(date)
     
     prompt = (
-        f"""Compose a {tone} letter from the tenant, {name}, to their landlord, {landlord_name}, addressing the ongoing dispute.
-Use the information provided below, focusing particularly on the 'Problems' and 'Relevant Clauses' sections to construct a well-supported argument or request.
-Ensure the letter maintains a professional tone and is concise, clear, and respectful, given the context of a dispute.
+        f"""Compose a {tone} letter from the tenant, {name}, to their landlord, {landlord_name}, addressing the ongoing dispute. Focus on details from the 'Problems' and 'Relevant Clauses' sections to create a well-supported and persuasive argument.
 
-Include the following in the letter:
-- A brief introduction that references the ongoing issues and the tenant's objective in reaching out.
-- A clear, structured outline of the problems being addressed, supported by the relevant clauses from the rental contract.
-- Any important details from the communication history that support the tenant's position or provide context.
-- A polite closing statement, reiterating the tenant's desired outcome or next steps.
+Guidelines for the Letter Structure:
 
-Details for the Letter:
+Header:
+
+Start with the tenant's name and address.
+Follow with the date.
+Include the landlord's name and address.
+Introduction:
+
+Briefly mention the purpose of the letter and the issues being addressed.
+State the tenant's objective in reaching out, such as seeking resolution or clarifying expectations.
+Body of the Letter:
+
+Section 1: Detailed Outline of Problems
+Clearly outline each issue the tenant is facing, supported by the corresponding clauses from the rental contract.
+Section 2: Communication History
+Summarize any relevant past communications with the landlord, highlighting actions, responses, or commitments that impact the current situation.
+Closing:
+
+Conclude with a respectful but assertive statement, reiterating the tenant's desired outcome or proposed next steps.
+End the letter with a polite sign-off and the tenant's full name.
+Required Elements:
+
+Tone must remain {tone} throughout, balancing clarity and respectfulness given the context of a dispute.
+Ensure the letter is concise, with each point structured to support the tenant's position effectively.
+Details for Customization:
 
 Tenant Name: {name}
 Tenant Address: {user_address}
