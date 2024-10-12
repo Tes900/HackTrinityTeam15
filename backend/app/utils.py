@@ -122,12 +122,23 @@ def create_pdf(text):
     styles = getSampleStyleSheet()
     style = styles["Normal"]
 
-    # Create a list to hold the Flowables
-    flowables = []
+    # Normalize newlines
+    import re
+    text = re.sub(r'\r\n', '\n', text)  # Convert Windows newlines to Unix format
+    text = re.sub(r'\r', '\n', text)     # Convert Mac newlines to Unix format
 
-    # Split the text into paragraphs
+    # Replace multiple newlines with a paragraph separator
+    text = re.sub(r'\n{2,}', '\n\n', text)  # Ensure paragraphs are separated by exactly two newlines
+
+    # Split the text into paragraphs based on double newlines
     paragraphs = text.strip().split('\n\n')
+
+    flowables = []
     for para in paragraphs:
+        # Replace single newlines within paragraphs with <br/> for line breaks
+        para = para.replace('\n', '<br/>')
+
+        # Create a Paragraph object, which can handle basic HTML tags
         flowables.append(Paragraph(para.strip(), style))
         flowables.append(Spacer(1, 12))  # Add space between paragraphs
 

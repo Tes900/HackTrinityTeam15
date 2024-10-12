@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <!-- Existing head content -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rentalyze</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/style.css" rel="stylesheet">
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <!-- Navbar (Unchanged) -->
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0">Rentalyze</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link" href="../homepage.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="#">Generate</a>
+            <a class="nav-link" href="ourmission.html">Our Mission</a>
+            <a class="nav-link" href="aboutus.html">About Us</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="px-3">
+        <form id="dispute-form" enctype="multipart/form-data">
+          <div class="container-fluid">
+            <!-- First Row -->
+            <div class="row">
+              <div class="col-md-4">
+                <label for="name">Your Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="col-md-4">
+                <label for="user_address">Your Address:</label>
+                <input type="text" class="form-control" id="user_address" name="user_address" required>
+              </div>
+              <div class="col-md-4">
+                <label for="landlord_name">Landlord's Name:</label>
+                <input type="text" class="form-control" id="landlord_name" name="landlord_name" required>
+              </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <label for="landlord_address">Landlord's Address:</label>
+                <input type="text" class="form-control" id="landlord_address" name="landlord_address" required>
+              </div>
+              <div class="col-md-6">
+                <label for="date">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" required>
+              </div>
+            </div>
+
+            <!-- Middle Section -->
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <label for="tone">Tone of Response:</label>
+                <select class="form-control" id="tone" name="tone">
+                  <option value="Polite">Polite</option>
+                  <option value="Formal" selected>Formal</option>
+                  <option value="Neutral">Neutral</option>
+                  <option value="Angry">Angry</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label for="file">Upload Rental Contract:</label>
+                <input type="file" class="form-control" id="file" name="file" accept=".pdf,.doc,.docx">
+              </div>
+            </div>
+
+            <!-- Third Row -->
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <label for="problems">Problems:</label>
+                <textarea class="form-control" id="problems" name="problems" rows="5" required></textarea>
+              </div>
+              <div class="col-md-6">
+                <label for="communication_history">History of Communication:</label>
+                <textarea class="form-control" id="communication_history" name="communication_history" rows="5"></textarea>
+              </div>
+            </div>
+
+            <!-- Generate Letter Button -->
+            <div class="row mt-4">
+              <div class="col-md-12 text-center">
+                <button id="generate-button" type="button" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Generate Letter</button>
+              </div>
+            </div>
+
+            <!-- Response Message -->
+            <div id="response" class="mt-4"></div>
+          </div>
+        </form>
+      </main>
+
+      <!-- Footer (Unchanged) -->
+      <footer class="mt-auto text-white-50">
+        <p>Created By Team 15 For <a href="https://hacktrinity.com/" class="text-white">GenAI x Law</a></p>
+      </footer>
+    </div>
+
+    <!-- Include the external JavaScript file -->
+    <script src="../js/lettergenscript.js"></script>
+  </body>
+</html>
