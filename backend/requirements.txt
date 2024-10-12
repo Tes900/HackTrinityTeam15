@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pdfplumber
+reportlab
+openai
+pydantic
+python-multipart
+pillow
