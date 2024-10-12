@@ -117,29 +117,3 @@ textarea {
     flex-direction: column;
   }
 }
-
-/* Arrow styling */
-.arrow-container {
-  position: relative;
-  width: 100%;
-  height: 100px;
-}
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 0;
-  height: 0;
-  margin-top: -25px;
-  margin-left: calc(50% - 25px);
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent;
-  border-left: 50px solid white;
-}
-
-@media (max-width: 768px) {
-  .arrow-container {
-    display: none;
-  }
-}

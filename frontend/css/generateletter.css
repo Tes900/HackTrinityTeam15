@@ -1,0 +1,282 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    overflow: hidden;
+}
+
+#gradient-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #1a1a1a, #333);
+    z-index: -2;
+}
+
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    height: calc(100vh - 60px);
+    margin-top: 60px;
+}
+
+.sidebar {
+    width: 400px;
+    /*background-color: rgba(51, 51, 51, 0.2);*/
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background-color: transparent;
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 30px;
+    display: inline-block;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.generate-button {
+    display: block;
+    width: 100%;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    border: 2px solid rgba(255, 255, 255, 1);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.generate-button::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: rgba(255, 255, 255, 0.2);
+    filter: blur(5px);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.generate-button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.generate-button:hover::before {
+    opacity: 1;
+}
+
+#generated-letter {
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Custom Scrollbar Styles */
+.sidebar, .main-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) rgba(255, 255, 255, 0.1);
+}
+
+.sidebar::-webkit-scrollbar, .main-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track, .main-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb, .main-content::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover, .main-content::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Ensure the scrollbar doesn't affect layout */
+.sidebar, .main-content {
+    padding-right: calc(20px + 8px); /* Original padding + scrollbar width */
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    cursor: pointer;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select option {
+    background-color: #333;
+    color: #fff;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Adjust the editor's width and font to match your page */
+#editor {
+    height: 400px; /* Set the height as needed */
+}
+
+.ql-toolbar.ql-snow {
+    background-color: #f9f9f9; /* Match your page's background color */
+}
+
+.ql-container.ql-snow {
+    border: 1px solid #ccc; /* Match your page's border styles */
+    font-family: 'Your Preferred Font', sans-serif;
+    font-size: 16px; /* Adjust the font size as needed */
+}
+
+/* generateletter.css */
+
+/* Optional: Style the Save Edit button */
+#save-edit-button {
+    background-color: #ffffff;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#save-edit-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+#editor-container {
+    width: 100%;
+    max-width: 1100px;; /* Ensure it does not grow beyond the .main-content container */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#quill-editor {
+    width: 100%;
+    max-width: 100%; /* Constrain the width */
+    box-sizing: border-box;
+    overflow-x: hidden;
+    white-space: normal;
+}
+
+.ql-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    overflow-x: hidden !important;
+}
+
+.ql-editor {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+    overflow-x: hidden !important;
+    word-wrap: break-word;
+}
+
+/* Or using media queries for different screen sizes */
+@media (max-width: 768px) {
+    #quill-editor {
+        height: 300px;
+    }
+}
+
+@media (min-width: 769px) {
+    #quill-editor {
+        height: 500px;
+    }
+}
+
+#response {
+    color: #ffffff; /* Sets text color to black */
+    margin-top: 20px; /* Optional */
+    font-size: 1rem; /* Optional */
+}
+
+.main-content {
+    flex-grow: 1;
+    max-width: 100%; /* Set a maximum width */
+    padding: 40px;
+    overflow-y: auto;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+#download-pdf-button {
+    height: 40px; /* Set to your desired width */
+    display: block;
+    font-size: 20px;
+}

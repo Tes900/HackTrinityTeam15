@@ -1,0 +1,361 @@
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        #gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            z-index: -1;
+        }
+
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(26, 26, 26, 1);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 80px 20px;
+            transition: transform 1s ease-out, opacity 1s ease-out;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .text-content, .image-content {
+            flex: 1;
+            max-width: 48%;
+        }
+
+        .section-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Alternating layout */
+        .section:nth-child(even) .content {
+            flex-direction: row-reverse;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .text-content, .image-content {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .section-image {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .section:nth-child(even) .content {
+                flex-direction: column;
+            }
+        }
+
+        h1, h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: #000;
+            background-color: #fff;
+            border: 2px solid #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: #fff;
+        }
+
+        .timeline-item {
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            h1, h2 {
+                font-size: 2.5rem;
+            }
+
+            p, .quote {
+                font-size: 1rem;
+            }
+        }
+
+/* Text scramble effect */
+.scramble {
+    opacity: 0;
+}
+
+/* Text slide up effect */
+.text-slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.text-slide-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Text wave effect */
+.text-wave .char {
+    display: inline-block;
+    animation: wave 1s infinite;
+    animation-delay: calc(0.1s * var(--char-index));
+}
+
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Text highlight effect */
+.text-highlight .word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.text-highlight .word.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.text-highlight .word:nth-child(odd) {
+    color: #ff00c1;
+}
+
+.text-highlight .word:nth-child(even) {
+    color: #00fff9;
+}
+
+/* Add these styles to the end of your existing CSS */
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.slide-up {
+    transform: translateY(20px);
+}
+
+.fade-in.appear {
+    opacity: 1;
+}
+
+.slide-up.appear {
+    transform: translateY(0);
+}
+
+/* Add this at the end of your CSS file */
+.section {
+    transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.section.zoom-out {
+    transform: scale(0.7);  /* More dramatic zoom out */
+    opacity: 0.3;  /* More transparent when zoomed out */
+}
+
+.section.zoom-in {
+    transform: scale(1.1);  /* More dramatic zoom in */
+    opacity: 1;
+}
+
+/* Add this to your existing CSS */
+.centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.centered-content .text-content {
+    max-width: 800px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Add or modify these rules in your CSS */
+
+#ai-solutions {
+    width: 100vw;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 80px 0; /* Remove horizontal padding */
+    box-sizing: border-box;
+}
+
+#ai-solutions .content {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 20px; /* Add horizontal padding to content instead */
+    box-sizing: border-box;
+}
+
+#ai-solutions .centered-content {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#ai-solutions .text-content {
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Adjust the zoom effect for this section */
+#ai-solutions.zoom-in {
+    transform: scale(1); /* Remove zoom for this section */
+}
+
+#ai-solutions.zoom-out {
+    transform: scale(1); /* Remove zoom for this section */
+}

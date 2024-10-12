@@ -1,68 +1,61 @@
-<!doctype html>
-<html lang="en" class="h-100">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Luke">
-    <title>Rentalyze</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentalyze - About Us</title>
+    <link rel="stylesheet" href="../css/aboutus.css">
+</head>
+<body>
+    <div id="gradient-bg"></div>
+    <canvas id="particleCanvas"></canvas>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+    <nav>
+        <a href="homepage.html" class="logo">RentaLyze</a>
+        <div class="nav-right">
+            <ul class="nav-links">
+                <li><a href="generateletter.html">Generate Letter</a></li>
+                <li><a href="ourmission.html">Our Mission</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    
+    <section class="section" id="about">
+        <div class="section-content">
+            <div class="company-name">About Us</div>
+            <h2>Our Project</h2>
+            <p>
+                "RentaLyze" combines artificial intelligence with legal expertise to address housing and rental challenges.
+                By utilising technologies such as Python, Bootstrap, and OpenAI's GPT, we developed an AI-powered tool for 
+                analysing rental agreements, generating dispute resolution letters, and guiding users through tenant-landlord 
+                issues.
+            </p>
+            <p>
+                Our goal is to streamline the rental experience, making housing more accessible and fair 
+                by leveraging AI's potential to enhance efficiency in dispute management and communication.
+            </p>
 
-    <!-- Bootstrap core CSS -->
-<link href="../css/bootstrap.min.css" rel="stylesheet">
+            <h2>The RentaLyze Team</h2>
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+            <h3><u>Frontend Developers</u></h3>
+            <ul>
+                <li><strong>Aaron Richard-Akinyemi</strong>: TCD 2nd year Management Science and Information Systems</li>
+                <li><strong>Somto Onwubuilo</strong>: TCD 2nd year Computer Science</li>
+            </ul>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
+            <h3><u>Backend Developers</u></h3>
+            <ul>
+                <li><strong>Luke Molony</strong>: TUD 2nd year Computer Science</li>
+                <li><strong>Shengxin Chen</strong>: TCD 3rd year Computer Science</li>
+            </ul>
+        </div>
+    </section>
 
-    
-    <!-- Custom styles for this template -->
-    <link href="../css/style.css" rel="stylesheet">
-  </head>
-  <body class="d-flex h-100 text-center text-white bg-dark">
-    
-<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-  <header class="mb-auto">
-    <div>
-      <h3 class="float-md-start mb-0">Rentalyze</h3>
-      <nav class="nav nav-masthead justify-content-center float-md-end">
-        <a class="nav-link" href="../homepage.html">Home</a>
-        <a class="nav-link" href="generateletter.html">Generate</a>
-        <a class="nav-link" href="ourmission.html">Our Mission</a>
-        <a class="nav-link active" aria-current="page" href="#">About Us</a>
-      </nav>
-    </div>
-  </header>
+    <footer>
+        <p>© 2024 RentaLyze | AI for Housing</p>
+    </footer>
 
-  <main class="px-3">
-    <h1>Rentalyze</h1>
-    <p class="lead">AI-powered rental dispute assistance. Upload your contract, describe your issue, and get a customized, clause-based response letter to resolve disputes with ease.</p>
-    <p class="lead">
-      <a href="html/generateletter.html" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Get started</a>
-    </p>
-  </main>
-
-  <footer class="mt-auto text-white-50">
-    <p>Created By Team 15 For <a href="https://hacktrinity.com/" class="text-white">GenAI x Law</a></p>
-  </footer>
-</div>
-
-
-    
-  </body>
+    <script src="../js/animation.js"></script>
+</body>
 </html>
