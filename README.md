@@ -23,7 +23,9 @@ RentaLyze is an AI-powered solution designed to streamline tenant-landlord dispu
 
 ### Step 3: Add API key
 - Navigate to `backend` `app` then open `utils.py`
-- On line 15 - api_key="", insert your own api key.
+- Insert your own api key to:
+  ```bash
+  client = OpenAI(api_key='')
   
 ### Step 4: Run the Frontend Server
 - Navigate to the `frontend` folder using the command line.
