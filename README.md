@@ -16,23 +16,27 @@ RentaLyze is an AI-powered solution designed to streamline tenant-landlord dispu
 - Pip will be installed automatically with Python.
 
 ### Step 2: Install Requirements
-- Open your command line (CMD or terminal) and navigate to the project's backend directory.
+- Open your command line (CMD or Poweshell) and navigate to the project's backend directory.
 - Run the following command to install the required dependencies:
   ```bash
   pip install -r requirements.txt
+
+### Step 3: Add API key
+- Navigate to `backend` `app` then open `utils.py`
+- On line 15 - api_key="", insert your own api key.
   
-### Step 3: Run the Frontend Server
+### Step 4: Run the Frontend Server
 - Navigate to the `frontend` folder using the command line.
 - Run the following command:
   ```bash
   python -m http.server 5500
 
-### Step 4: Run the Backend Server
+### Step 5: Run the Backend Server
 - Open another command line window and navigate to the `backend` folder.
 - Run the backend with the following command:
   ```bash
   python -m app.main
 
-### Step 5: Access the Web App
+### Step 6: Access the Web App
 - Open a web browser and go to:
 http://localhost:5500/html/homepage.html
