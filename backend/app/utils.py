@@ -75,6 +75,9 @@ def generate_letter(name, landlord_name, landlord_address, problems, communicati
 
 Guidelines for the Letter Structure:
 
+Avoid using any asterisk (*) symbols. When incorporating specific clauses, ensure to include the corresponding clause number or letter along with the clause text.
+For the address, include exactly what is given, regardless of completeness. If only the number and street are provided, include just those details and omit references to other address components like postal code, city, or state.
+
 Header:
 
 Start with the tenant's name and address.
