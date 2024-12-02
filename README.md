@@ -1,4 +1,5 @@
 # RentaLyze
+# Note: This is a fork of a project I contributed to in order to display it on my profile!
 
 ## Overview
 RentaLyze is an AI-powered solution designed to streamline tenant-landlord dispute resolution. Our platform assists tenants in generating formal complaint letters based on their rental agreements, facilitating conflict resolution through AI-driven analysis of key rental agreement clauses. By leveraging technologies such as Python, Bootstrap, and OpenAI's GPT, we make legal assistance accessible and affordable for all tenants, empowering them to assert their rights while promoting fair and transparent communication.
